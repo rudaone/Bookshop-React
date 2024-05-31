@@ -1,0 +1,18 @@
+.input {
+    /* width: 93%; */
+    padding: 20px;
+    border: none;
+    margin-bottom: 40px;
+    text-decoration: none;
+    outline: none;
+}
+.label {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: rgba(49, 48, 55, 1);
+}
+.label_dark {
+    color: rgb(0, 26, 255);
+}

@@ -1,0 +1,24 @@
+.books_main-wrap {
+  width: 1120px;
+  margin: 0 auto;
+
+}
+
+.books_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 32px;
+}
+
+.books_main-title {
+  width: 383px;
+  height: 64px;
+  font-family: "Bebas Neue";
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: px;
+  font-size: 56px;
+  color: hsla(249, 7%, 20%, 1);
+}

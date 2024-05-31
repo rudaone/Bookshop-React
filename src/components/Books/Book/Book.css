@@ -1,0 +1,80 @@
+.book__wrap {
+    display: flex;
+    width: 352px;
+    height: 454px;
+    margin-top: 48px;
+    flex-direction: column;
+}
+
+.book_image-wrap {
+    width: 352px;
+    height: 265px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 226px;
+    height: 264px;
+    display: flex;
+
+}
+
+.book_title {
+    width: 350px;
+    height: 64px;
+    font-family: "Bebas Neue";
+    font-weight: 500;
+    font-size: 24px;
+    color: hsla(249, 7%, 20%, 1);
+    display: flex;
+
+}
+
+.book_span {
+    width: 300px;
+    height: 24px;
+    font-family: "Inter";
+    font-size: 16px;
+    color: hsla(0, 0%, 66%, 1);
+    display: flex;
+    margin-top: 8px;
+    line-height: 20px;
+}
+
+.book_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.book__price {
+    font-family: "Bebas Neue";
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 1px;
+    font-size: 24px;
+    color: hsla(249, 7%, 20%, 1);
+    display: flex;
+}
+
+.book__stars {
+    width: 30%;
+    display: flex;
+}
+
+.link__book {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.book__descr {
+    width: 352px;
+    height: 168px;
+
+}

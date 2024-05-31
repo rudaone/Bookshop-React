@@ -1,0 +1,29 @@
+.search__wrapper {
+  width: 60%;
+  height: 40%;
+  display: flex;
+  border: 1px solid rgba(231, 231, 231, 1);
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+
+.search__input::placeholder {
+  color: rgb(190, 190, 190);
+}
+
+.search__input {
+  width: 90%;
+  outline: none;
+  border: none;
+  flex-grow: 1;
+
+}
+
+.search__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
