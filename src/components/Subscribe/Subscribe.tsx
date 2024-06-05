@@ -1,9 +1,8 @@
 import './Subscribe.css'
-import { Button } from '../Button'
 import { useState } from 'react'
-import { INPUT_TYPES } from '../../types'
+import { useRef } from 'react'
 
-const Subscribe = ({className}: {className?: string}) => {
+const Subscribe = ({ className }: { className?: string }) => {
     const [formState, setFormState] = useState({
         email: '',
     })
@@ -15,8 +14,15 @@ const Subscribe = ({className}: {className?: string}) => {
         }))
     }
 
+
+
+
+    const handleClick = () => {
+        alert('Congratulations! You subscribed to newsletters');
+    };
+
     return (
-        <p className='subscribe__wrapper'>
+        <div className='subscribe__wrapper'>
             <div className='subscribe-inner'>
                 <h1 className='subscribe-title'>
                     Subscribe to Newsletter
@@ -26,23 +32,23 @@ const Subscribe = ({className}: {className?: string}) => {
                 </div>
 
                 <div className='subscribe-input-button'>
-                    <input 
+                    <input
                         className='subscribe-input'
-                        type={INPUT_TYPES.TEXT}
                         placeholder={'Your email'}
                         value={formState.email}
                         onChange={(e: any) => handler('email', e.target.value)}
                     />
 
-                    <Button 
+                    <button
                         className='subscribe-btn'
-                        onClick={(event: any) => (event)}
+                        onClick={handleClick}
                         children='Subscribe'
+
                     />
                 </div>
             </div>
-     
-        </p>
+
+        </div>
 
     )
 }

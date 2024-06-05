@@ -6,22 +6,25 @@
     padding-top: 5%;
     padding-bottom: 5%;
 }
+
 .subscribe-inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 64px;
 }
+
 .subscribe-title {
     font-family: Bebas Neue;
     font-size: 40px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 60px;
     text-align: left;
     color: rgba(49, 48, 55, 1);
     margin-bottom: 10px;
 }
+
 .subscribe-text {
     font-family: Inter;
     font-size: 18px;
@@ -31,26 +34,30 @@
     color: rgba(168, 168, 168, 1);
     margin-bottom: 32px;
 }
+
 .subscribe-input-button {
     display: flex;
-    width: 100%;
+    width: 992px;
 }
+
 .subscribe-input {
-    flex: 0 0 70%;
-    box-sizing: border-box;
-}
-.subscribe-btn {
-    flex: 0 0 30%;
-    height: 56px;
+    width: 835px;
+    padding-left: 10px;
     border: none;
+}
+
+.subscribe-btn {
+    display: flex;
+    width: 147px;
+    height: 56px;
     background: rgba(49, 48, 55, 1);
-    font-family: Bebas Neue;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.05em;
-    text-align: center;
+    font-family: "Bebas Neue";
+    font-size: 18px;
+    font-weight: 500;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
     color: rgba(255, 255, 255, 1);
-    box-sizing: border-box;
+    border: 0;
 }

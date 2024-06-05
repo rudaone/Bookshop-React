@@ -1,12 +1,11 @@
 import './ContentPage.css';
-import { useParams } from 'react-router-dom'; 
+import { useParams } from 'react-router-dom';
 import { IStoreState, ISelectedBook } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { loadSelectedBook, addToCart } from '../../redux/actionCreators';
 import { Link } from 'react-router-dom';
 import { Arrow } from '../Icons/Arrow';
-import { Button } from '../Button';
 import { useState } from 'react';
 import { Twitter } from '../Icons/Twitter';
 import { Facebook } from '../Icons/Facebook';
@@ -15,9 +14,9 @@ import { ICart } from '../../types';
 import { Rating } from 'react-simple-star-rating';
 import { StarsRating } from '../StarsRating';
 
-  
+
 const ContentPage = () => {
-    const { isbn13 = '' } = useParams(); 
+    const { isbn13 = '' } = useParams();
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
     const dispatch = useDispatch();
     const [activeTab, setActiveTab] = useState('description');
@@ -31,25 +30,39 @@ const ContentPage = () => {
         setActiveTab(tab);
     };
 
+    const colors = [
+        'rgba(244, 238, 253, 1)',
+        'rgba(202, 239, 240, 1)',
+        'rgba(215, 228, 253, 1)',
+
+    ];
+
+    const getRandomColor = () => {
+        return colors[Math.floor(Math.random() * colors.length)];
+    };
+
+
     return (
-        <article className='content__page-wrapper'>
-            <p className='upper__wrapper'>
+        <div className='content__page-wrapper'>
+            <div className='upper__wrapper'>
                 <div className='content__page_header'>
                     <div className='content__page_header-menu'>
                         <Link to='/new' className='content__page_header-arrow'>
                             <Arrow />
                         </Link>
                     </div>
-                        <h3 className='content__page_header-title'>{selectedBook.title}</h3>
+                    <h3 className='content__page_header-title'>{selectedBook.title}</h3>
                 </div>
                 <div className='content__book-info'>
-                    <div className='content__img-container'>
+                    <div className='content__img-container'
+                        style={{ backgroundColor: getRandomColor() }}
+                    >
                         <img className="content__book-image" src={selectedBook.image} alt="img name" />
                     </div>
                     <div className='content__book-infocard'>
                         <div className='price_rate-row'>
                             <div className='content__book-price'>{selectedBook.price}</div>
-                            <StarsRating className='content__book-rate'/>
+                            <StarsRating className='content__book-rate' />
                         </div>
                         <div className='author-container'>
                             <div className='author'>Authors:</div>
@@ -67,7 +80,7 @@ const ContentPage = () => {
                             <div className='page'>Pages:</div>
                             <div className='content__book-page'>{selectedBook.pages}</div>
                         </div>
-                        <Button 
+                        <button
                             className='add-btn'
                             onClick={() => {
                                 const cartItem: ICart = {
@@ -75,32 +88,34 @@ const ContentPage = () => {
                                     title: selectedBook.title,
                                     price: selectedBook.price,
                                     authors: selectedBook.authors,
-                                    image: selectedBook.image
+                                    image: selectedBook.image,
+                                    quantity: 1
                                 };
                                 dispatch(addToCart(cartItem));
+                                alert("Product successfully added to cart!")
                             }}
                             children='Add to cart'
-                         />
+                        />
                     </div>
                 </div>
-            </p>
+            </div>
 
-            <p className='middle__wrapper'>
+            <div className='middle__wrapper'>
                 <div className='tabs'>
-                    <button 
-                        className={activeTab === 'description' ? 'active' : ''} 
+                    <button
+                        className={activeTab === 'description' ? 'active' : ''}
                         onClick={() => handleTabClick('description')}>
-                            Description
+                        Description
                     </button>
-                    <button 
-                        className={activeTab === 'authors' ? 'active' : ''} 
+                    <button
+                        className={activeTab === 'authors' ? 'active' : ''}
                         onClick={() => handleTabClick('authors')}>
-                            Authors
+                        Authors
                     </button>
-                    <button 
-                        className={activeTab === 'reviews' ? 'active' : ''} 
+                    <button
+                        className={activeTab === 'reviews' ? 'active' : ''}
                         onClick={() => handleTabClick('reviews')}>
-                            Reviews
+                        Reviews
                     </button>
                 </div>
 
@@ -116,15 +131,19 @@ const ContentPage = () => {
 
                     <Link to='https://x.com/?lang=ru'>
                         <Twitter />
+                    </Link>  
+                    
+                    <Link className='dots' to=' '>
+                        <span>•••</span>
                     </Link>
                 </div>
 
                 <Subscribe />
-            </p>
+            </div>
 
-            
 
-        </article>
+
+        </div>
     )
 }
 

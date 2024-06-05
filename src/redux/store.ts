@@ -1,30 +1,32 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { booksReducer } from './reducers';
+import { booksReducer, userReducer } from './reducers';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects'
-import { watcherBooks } from './actionCreators';
+import { watcherBooks, watcherUser } from './actionCreators';
 
 export default createStore(
-    combineReducers({
-      books: booksReducer,
-    }),
-  );
+  combineReducers({
+    books: booksReducer,
+  }),
+);
 
 const sagaMiddleware = createSagaMiddleware()
 
 function* rootSaga() {
-    yield all([
-        watcherBooks(),
-      ])
-  }
-  
+  yield all([
+    watcherBooks(),
+    watcherUser()
+  ])
+}
+
 const store = createStore(
-    combineReducers({
-        books: booksReducer,
-    }), {},
-    applyMiddleware(sagaMiddleware)
+  combineReducers({
+    books: booksReducer,
+    user: userReducer
+  }), {},
+  applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(rootSaga)  
+sagaMiddleware.run(rootSaga)
 
 export { store }

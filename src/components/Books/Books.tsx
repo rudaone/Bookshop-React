@@ -4,22 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadBooks } from '../../redux/actionCreators';
 import { Book } from './Book/Book';
 import { IBook, IStoreState } from '../../types';
-import { Pagination } from '../Pagination';
 import { Subscribe } from '../Subscribe';
-import { BooksSelect } from '../BooksSelect';
 const Books = () => {
   const books = useSelector((state: IStoreState) => state.books.books);
   const limit = useSelector((state: IStoreState) => state.books.limit);
-  const currentPage = useSelector((state: IStoreState) => state.books.currentPage);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(loadBooks({ limit, currentPage }));
-  // }, [limit, currentPage, dispatch]);
 
   useEffect(() => {
-    dispatch(loadBooks({ limit, currentPage }))
-  }, [limit, currentPage])
+    dispatch(loadBooks({ limit }))
+  }, [limit])
 
 
   const colors = [
@@ -62,7 +56,7 @@ const Books = () => {
       <div className="books_wrap">
         {renderBooks()}
       </div>
-      <BooksSelect/>
+      <Subscribe/>
     </div>
   );
 };

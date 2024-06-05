@@ -5,24 +5,6 @@ interface IButton {
     onClick: any,
 }
 
-export enum INPUT_TYPES {
-    TEXTAREA = 'textarea',
-    NUMBER = 'number',
-    PASSWORD = 'password',
-    TEXT = 'text'
-}
-
-interface IInput {
-    className: string,
-    label?: string,
-    placeholder: string,
-    value?: string | number,
-    onChange?: Function,
-    type?: INPUT_TYPES,
-    disabled?: boolean,
-    errorMessage?: string,
-    onKeyDown?: Function,
-}
 
 interface IBook {
     title: string,
@@ -30,7 +12,7 @@ interface IBook {
     isbn13: number,
     price: number,
     image: string,
-    url: string,
+    url?: string,
     backgroundColor?: string,
     onClick?: Function
 }
@@ -61,30 +43,25 @@ interface IBooksState {
     books: IBook[],
     limit: number,
     selectedBook: ISelectedBook,
-    total: number,
-    currentPage: number,
-    totalBook: number,
-    currentBook: number,
-    cart: ICart[]
+    cart: ICart[],
+    likeBook: ILIkeBook[],
+
 }
 
 interface IBooksInfo {
     limit: number;
-    currentPage: number,
-    search?: string | null
+    search?: string | null,
 }
 
 interface IStoreState {
     books: IBooksState,
     limit: number,
     cart: ICartState
+    user: IUserState,
 }
 
-interface ISignUp {
-    username: string,
-    email: string,
-    password: string,
-    course_group?: number
+interface IUserState {
+    user: IUser
 }
 
 interface IUser {
@@ -93,9 +70,12 @@ interface IUser {
     email: string
 }
 
-
-
-
+interface ISignUp {
+    username: string,
+    email: string,
+    password: string,
+    course_group?: number
+}
 
 interface ISignIn {
     email: string,
@@ -109,15 +89,32 @@ interface ICart {
     price: number;
     authors: string;
     image: string
+    quantity: number
 }
 
 interface ICartState {
     cart: ICart[];
 }
 
+interface IActivationInfo {
+    uid: string,
+    token: string
+}
+
+export interface ILIkeBook {
+    isbn13: number;
+    title: string;
+    price: number;
+    authors: string;
+    image: string;
+}
+
+export interface ILikeBookState {
+    likeBook: ILIkeBook[],
+}
+
 export type {
     IButton,
-    IInput,
     IBook,
     ISelectedBook,
     IBooksState,
@@ -128,5 +125,7 @@ export type {
     IUser,
     ISignIn,
     ICart,
-    ICartState
+    ICartState,
+    IUserState,
+    IActivationInfo,
 }

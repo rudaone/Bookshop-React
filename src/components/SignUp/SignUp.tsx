@@ -1,18 +1,19 @@
 import './SignUp.css'
-import { Input } from '../Input'
-import { INPUT_TYPES } from '../../types'
-import { Button } from '../Button'
+
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signUpUser } from '../../redux/actionCreators'
 import { Link } from 'react-router-dom';
 
 const SignUp = () => {
+    const dispatch = useDispatch();
     const [formState, setFormState] = useState({
         username: '',
         email: '',
         password: '',
         confirm: ''
     })
-    
+
     const handler = (key: string, value: string) => {
         setFormState(prev => ({
             ...prev,
@@ -20,62 +21,101 @@ const SignUp = () => {
         }))
     }
 
+    const handleSignUp = () => {
+        const { confirm, ...other } = formState;
+        dispatch(signUpUser(other))
+    }
+
     return (
-        <div className='registration__page'>
-       <div className='reg__form-wrapper'>
-          <div className='input__container'>
-            <Input 
-                label={'Name'}
-                type={INPUT_TYPES.TEXT}
-                placeholder={'Your name'}
-                className="input"
-                value={formState.username}
-                onChange={(e: any) => handler('username', e.target.value)}
-            />
+        <div className='sign-up__container'>
 
-            <Input 
-                label={'Email'}
-                type={INPUT_TYPES.TEXT}
-                placeholder={'Your email'}
-                className="input"
-                value={formState.email}
-                onChange={(e: any) => handler('email', e.target.value)}
-            />
+            <div className='sign-up__wrapper-up'>
+                <div className="form__header">
+                    
+                    <Link to="/sign-in" className='sign-in__header__link-up'>
+                        <div className='sign-in__header-up'>SIGN IN</div>
+                    </Link>
+                    <div className='sign-up__header-up'>SIGN UP</div>
 
-            <Input 
-                label={'Password'}
-                type={INPUT_TYPES.PASSWORD}
-                placeholder={'Your password'}
-                className="input"
-                value={formState.password}
-                onChange={(e: any) => handler('password', e.target.value)}
-            />
-
-            <Input 
-                label={'Confirm password'}
-                type={INPUT_TYPES.PASSWORD}
-                placeholder={'Confirm password'}
-                className="input"
-                value={formState.confirm}
-                onChange={(e: any) => handler('confirm', e.target.value)}
-            />
-            </div>
-            <div className='sign_up_button-container'>
-                <Button 
-                    className='sign_up-button'
-                    onClick={console.log('good')}       
-                    children='SIGN UP'
-                />
-            </div>
-           
-            <footer className='reg__form-footer'>
-                <div className='reg__form-footer-inner'>
-                    <div className='reg__form-footer-text'>Already have an account?</div>
-                    <Link to="/sign-in" className='reg__form-footer-btn'>Sign in</Link>
                 </div>
-            </footer>
+                <div className='sign-up__inputs'>
+                    <div className='div__email'>
+                        <span className='input__span'>Name</span>
+                        <input
+                            type='text'
+                            placeholder={'Your name'}
+                            className="input"
+                            value={formState.username}
+                            onChange={(e: any) => handler('username', e.target.value)}
+                            onKeyDown={(e: any) => {
+                                if (e.key === "Enter") {
+                                    const { confirm, ...other } = formState;
+                                    dispatch(signUpUser(other))
+                                }
+                            }}
+                        />
+                    </div>
+
+                    <div className="div__password">
+                        <span className='input__span'>Email</span>
+
+                        <input
+                            type='text'
+                            placeholder={'Your email'}
+                            className="input"
+                            value={formState.email}
+                            onChange={(e: any) => handler('email', e.target.value)}
+                            onKeyDown={(e: any) => {
+                                if (e.key === "Enter") {
+                                    const { confirm, ...other } = formState;
+                                    dispatch(signUpUser(other))
+                                }
+                            }}
+                        />
+                    </div>                    <div className="div__password">
+                        <span className='input__span'>Password</span>
+
+                        <input
+                            type='password'
+                            placeholder={'Your password'}
+                            className="input"
+                            value={formState.password}
+                            onChange={(e: any) => handler('password', e.target.value)}
+                            onKeyDown={(e: any) => {
+                                if (e.key === "Enter") {
+                                    const { confirm, ...other } = formState;
+                                    dispatch(signUpUser(other))
+                                }
+                            }}
+                        />
+
+                    </div>                    <div className="div__password">
+                        <span className='input__span'>Confirm password</span>
+
+                        <input
+                            type='password'
+                            placeholder={'Confirm password'}
+                            className="input"
+                            value={formState.confirm}
+                            onChange={(e: any) => handler('confirm', e.target.value)}
+                            onKeyDown={(e: any) => {
+                                if (e.key === "Enter") {
+                                    const { confirm, ...other } = formState;
+                                    dispatch(signUpUser(other))
+                                }
+                            }}
+                        />
+                    </div>
+                </div>
+
+                <button className='sign-up__btn' onClick={handleSignUp}>SIGN UP</button>
+
+            </div>
         </div>
-        </div>
+
+
+
+
     )
 }
 

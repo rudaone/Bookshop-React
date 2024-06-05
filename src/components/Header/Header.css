@@ -9,8 +9,24 @@
     margin-bottom: 72px;
 }
 
-.header__icons-wrapper {
+.header__icons{
     width: 150px;
     display: flex;
+    /* align-items: start; */
     justify-content: space-between;
 }
+
+.favourite__link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}.basket__link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}.user__link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -1,81 +1,115 @@
-.registration__page {
-    width: 100%;
-    height: 975px;
-    max-width: 1040px;
-    margin: 0 auto;
-    background-color: white;
-    top: 0;
-    position: relative;
- }
-.reg__form-wrapper {
-    width: 60%;
-    height: 684px;
-    padding: 40px 0px 0px 0px;
-    border: 1px solid rgba(231, 231, 231, 1);
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.input__container {
-    width: 90%;
-    height: 435px;
-    margin: 40px auto;
-    position: relative; 
-    top: 30%; 
-    transform: translateY(-50%);
-    padding: 0;
-}
-.reg__form-footer {
-    width: 100%;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-}
-.reg__form-footer-inner {
-    width: 100%;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 24px;
-}
-.reg__form-footer-text {
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    text-align: left;
-    color: rgba(141, 142, 151, 1);
-}
-.sign_up_button-container {
-    width: 95%;
-    display: flex;
-}
-.sign_up-button {
-    width: 95%;
-    height: 56px;
+.sign-up__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 2px 0px 0px 0px;
-    border: none;
-    cursor: pointer;
-    background: rgba(49, 48, 55, 1);
-    font-family: Bebas Neue;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.05em;
-    text-align: center;
-    color: rgba(255, 255, 255, 1);
-    margin-top: 30px;
-    margin-left: 30px;
-    border-radius: 5px;
-}
-@media only screen and (max-width: 414px) {
-    .sign_up-button {
-        margin-left: 10px;
-    }
+    height: 80vh;
+
 }
 
+.sign-up__wrapper-up {
+    width: 544px;
+    height: 656px;
+    border: 1px solid rgba(231, 231, 231, 1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form__header {
+    display: flex;
+    width: 88%;
+    padding: 0 32px;
+}
+
+.sign-up__header-up {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 50%;
+    height: 62px;
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue";
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.sign-in__header-up {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bebas Neue";
+    font-weight: 500;
+    font-size: 24px;
+    opacity: 0.2;
+    border-bottom: 2px solid black;
+
+}
+
+.sign-in__header__link-up {
+    margin: 0 auto;
+    color: black;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sign-in__header-up:hover {
+    opacity: 0.4;
+    transition: 0.1s;
+}
+
+.sign-up__inputs {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 416px;
+    margin: 32px;
+    margin-bottom: 40px;
+    gap: 16px;
+}
+
+.input__span {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.input {
+    width: 468px !important;
+    height: 56px !important;
+    border: 1px solid rgba(231, 231, 231, 1) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 10px !important;
+}
+
+.forgot__btn-up {
+    color: rgba(49, 48, 55, 1);
+    text-decoration: none;
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.sign-up__btn {
+    width: 480px;
+    height: 56px;
+    background-color: rgba(49, 48, 55, 1);
+    color: rgba(255, 255, 255, 1);
+    font-family: "Bebas Neue";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
