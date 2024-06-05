@@ -24,6 +24,7 @@ const Header = () => {
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
         localStorage.removeItem('cart')
+        localStorage.removeItem('likes')
         console.log("User after logout:", user);
         window.location.pathname = '/sign-in';
     };

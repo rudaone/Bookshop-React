@@ -7,7 +7,7 @@ import { StarsRating } from '../StarsRating'
 
 const LikesBooks = () => {
     const dispatch = useDispatch()
-    const favItems = useSelector((state: IStoreState) => state.books.likeBook);
+    const likeItems = useSelector((state: IStoreState) => state.books.likeBook);
 
     const colors = [
         'rgba(244, 238, 253, 1)',
@@ -20,6 +20,14 @@ const LikesBooks = () => {
         return colors[Math.floor(Math.random() * colors.length)];
     };
 
+    if (!likeItems || likeItems.length === 0) {
+        return (
+            <div className='basket__header'>
+                <div className='header__empty-cart'>your likes is empty</div>
+            </div>
+        );
+    }
+
     return (
         <div className='likes__wrapper'>
             <div className="likes__header">
@@ -31,7 +39,7 @@ const LikesBooks = () => {
                 <h1 className="likes__header-title">likes books</h1>
             </div>
             <div className="likes">
-                {favItems.map((el) =>
+                {likeItems.map((el) =>
                     <div className="likes__card">
                         <div className="likes__image-wrapper" style={{ backgroundColor: getRandomColor() }}>
                             <img src={el.image} className="likes__image" />
