@@ -21,7 +21,7 @@ import { addToLikes } from '../../redux/actionCreators';
 const ContentPage = () => {
     const { isbn13 = '' } = useParams();
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
-    const favorites = useSelector((state: IStoreState) => state.books.likeBook);
+    const likes = useSelector((state: IStoreState) => state.books.likeBook);
 
     const dispatch = useDispatch();
     const [activeTab, setActiveTab] = useState('description');
@@ -35,10 +35,10 @@ const ContentPage = () => {
     const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
-        if (selectedBook && favorites) {
-            setIsLiked(favorites.some(book => book.isbn13 === selectedBook.isbn13));
+        if (selectedBook && likes) {
+            setIsLiked(likes.some(book => book.isbn13 === selectedBook.isbn13));
         }
-    }, [selectedBook, favorites]);
+    }, [selectedBook, likes]);
 
     const handleLikeClick = () => {
         const likeBook: ILikes = {
@@ -80,7 +80,7 @@ const ContentPage = () => {
             <div className='upper__wrapper'>
                 <div className='content__page_header'>
                     <div className='content__page_header-menu'>
-                        <Link to='/new' className='content__page_header-arrow'>
+                        <Link to='/books' className='content__page_header-arrow'>
                             <Arrow />
                         </Link>
                     </div>

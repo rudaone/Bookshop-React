@@ -31,7 +31,7 @@ const Header = () => {
     console.log(user)
     return (
         <div className='header__wrapper'>
-            <Link to='/books'> <Label /> </Link>
+            <Link to='/books' className='main__link'> <Label /> </Link>
             <Search />
             <div className='header__icons'>
                 <Link to='/like' className='like__link'> <Like /></Link>

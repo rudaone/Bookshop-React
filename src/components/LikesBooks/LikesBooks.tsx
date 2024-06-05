@@ -4,10 +4,16 @@ import { ILikes, IStoreState } from '../../types'
 import { Link } from 'react-router-dom'
 import { Arrow } from '../Icons/Arrow'
 import { StarsRating } from '../StarsRating'
+import { removeFromLikes } from '../../redux/actionCreators'
+import { AddLike } from '../Icons/AddLike'
+import { Heart } from '../Icons/Heart'
 
 const LikesBooks = () => {
     const dispatch = useDispatch()
     const likeItems = useSelector((state: IStoreState) => state.books.likeBook);
+    const handleRemoveFromLikeBook = (isbn13: number) => {
+        dispatch(removeFromLikes(isbn13));
+    };
 
     const colors = [
         'rgba(244, 238, 253, 1)',
@@ -56,6 +62,8 @@ const LikesBooks = () => {
                                 </div>
                             </div>
                         </div>
+                        <Heart className='heart__link' onClick={() => handleRemoveFromLikeBook(el.isbn13)} 
+                        />
                     </div>)}
             </div>
         </div>
