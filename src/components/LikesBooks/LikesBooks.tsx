@@ -3,10 +3,23 @@ import './LikesBooks.css'
 import { ILikes, IStoreState } from '../../types'
 import { Link } from 'react-router-dom'
 import { Arrow } from '../Icons/Arrow'
+import { StarsRating } from '../StarsRating'
 
 const LikesBooks = () => {
     const dispatch = useDispatch()
     const favItems = useSelector((state: IStoreState) => state.books.likeBook);
+
+    const colors = [
+        'rgba(244, 238, 253, 1)',
+        'rgba(202, 239, 240, 1)',
+        'rgba(215, 228, 253, 1)',
+
+    ];
+
+    const getRandomColor = () => {
+        return colors[Math.floor(Math.random() * colors.length)];
+    };
+
     return (
         <div className='likes__wrapper'>
             <div className="likes__header">
@@ -20,15 +33,19 @@ const LikesBooks = () => {
             <div className="likes">
                 {favItems.map((el) =>
                     <div className="likes__card">
-                        <div className="likes__image-wrapper">
+                        <div className="likes__image-wrapper" style={{ backgroundColor: getRandomColor() }}>
                             <img src={el.image} className="likes__image" />
                         </div>
                         <div className="likes__data-wrapper">
-                            <Link to={`/books/${el.isbn13}`} className="likes__link"><h3 className="like__data-title">{el.title}</h3></Link>
+                            <Link to={`/books/${el.isbn13}`} className="likes__link">
+                                <h3 className="like__data-title">{el.title}</h3>
+                                </Link>
                             <h5 className="likes__data-authors">{el.authors}</h5>
                             <div className="likes__data-footer">
                                 <h1 className="likes__data-price">{el.price}</h1>
-                                <div className="likes__data-stars"></div>
+                                <div className="likes__data-stars">
+                                    <StarsRating/>
+                                </div>
                             </div>
                         </div>
                     </div>)}

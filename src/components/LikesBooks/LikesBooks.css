@@ -18,3 +18,61 @@
     justify-content: space-between;
     margin: 0 auto;
 }
+
+.likes__image-wrapper {
+    width: 256px;
+    height: 192px;
+    display: flex;
+    justify-content: center;
+}
+
+.likes__card {
+    padding: 50px 0;
+    width: 1120px;
+    height: 193px;
+    display: flex;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(231, 231, 231, 1);
+}
+
+.likes__data-footer {
+    width: 352px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.likes__data-wrapper {
+    width: 446px;
+    height: 120px;
+    margin: 36px 32px;
+}
+
+.like__data-title {
+    font-family: "Bebas Neue";
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(49, 48, 55, 1);
+    margin-bottom: 8px;
+    text-decoration: none;
+}
+
+.likes__link {
+    text-decoration: none;
+}
+
+.likes__data-authors {
+    font-family: "Inter";
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(168, 168, 168, 1);
+    margin-bottom: 24px;
+}
+
+.likes__data-price {
+    font-family: "Bebas Neue";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+}
