@@ -33,7 +33,7 @@ const Header = () => {
             <Link to='/books'> <Label /> </Link>
             <Search />
             <div className='header__icons'>
-                <Link to='/favourite' className='favourite__link'> <Like /></Link>
+                <Link to='/like' className='like__link'> <Like /></Link>
                 <Link to='/basket'className='basket__link'> <Basket /> </Link>
                 {localStorage.getItem('access') ? (
                     <Exit onClick={handleLogout} className='exit__icon' />

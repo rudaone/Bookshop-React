@@ -1,5 +1,16 @@
-import { IBooksState, IBook, ISelectedBook, ICart, ILIkeBook } from '../../types';
-import { ADD_TO_CART, SET_BOOKS, REMOVE_QUANTITY, ADD_QUANTITY, CLEAR_CART, SET_BOOKS_LIMIT, REMOVE_FROM_CART, SET_SELECTED_BOOK, LIKE_BOOK, REMOVE_FROM_LIKE_BOOK} from '../actionTypes';
+import { IBooksState, IBook, ISelectedBook, ICart, ILikes } from '../../types';
+import {
+    ADD_TO_CART,
+    SET_BOOKS,
+    REMOVE_QUANTITY,
+    ADD_QUANTITY,
+    CLEAR_CART,
+    SET_BOOKS_LIMIT,
+    REMOVE_FROM_CART,
+    SET_SELECTED_BOOK,
+    REMOVE_FROM_LIKES,
+    ADD_TO_LIKES
+} from '../actionTypes';
 
 
 const loadCartFromLocalStorage = (): ICart[] => {
@@ -22,22 +33,22 @@ const saveCartToLocalStorage = (cart: ICart[]) => {
 }
 
 
-const loadFavoritesFromLocalStorage = (): ILIkeBook[] => {
+const loadLikesFromLocalStorage = (): ILikes[] => {
     try {
-        const serializedFavorites = localStorage.getItem('favorites');
-        return serializedFavorites ? JSON.parse(serializedFavorites) : [];
+        const serializedLikes = localStorage.getItem('likes');
+        return serializedLikes ? JSON.parse(serializedLikes) : [];
     } catch (e) {
-        console.warn("Could not load favorites from localStorage", e);
+        console.warn("Could not load likes from localStorage", e);
         return [];
     }
 }
 
-const saveFavoritesToLocalStorage = (favorites: ILIkeBook[]) => {
+const saveLikesToLocalStorage = (likes: ILikes[]) => {
     try {
-        const serializedFavorites = JSON.stringify(favorites);
-        localStorage.setItem('favorites', serializedFavorites);
+        const serializedLikes = JSON.stringify(likes);
+        localStorage.setItem('likes', serializedLikes);
     } catch (e) {
-        console.warn("Could not save favorites to localStorage", e);
+        console.warn("Could not save likes to localStorage", e);
     }
 }
 const initialState: IBooksState = {
@@ -45,7 +56,7 @@ const initialState: IBooksState = {
     limit: 6,
     selectedBook: {} as ISelectedBook,
     cart: loadCartFromLocalStorage(),
-    likeBook: loadFavoritesFromLocalStorage(),
+    likeBook: loadLikesFromLocalStorage(),
 
 };
 
@@ -133,21 +144,21 @@ const booksReducer = (state: IBooksState = initialState, action: any) => {
                 ...state,
                 cart: []
             };
-        }        
-        case LIKE_BOOK: {
-            const newFavBooks = [...state.likeBook, action.likeBook];
-            saveFavoritesToLocalStorage(newFavBooks);
+        }
+        case ADD_TO_LIKES: {
+            const newLikeBook = [...state.likeBook, action.likeBook];
+            saveLikesToLocalStorage(newLikeBook);
             return {
                 ...state,
-                likeBook: newFavBooks
+                likeBook: newLikeBook
             };
         }
-        case REMOVE_FROM_LIKE_BOOK: {
-            const newFavBooks = state.likeBook.filter(book => book.isbn13 !== action.isbn13);
-            saveFavoritesToLocalStorage(newFavBooks);
+        case REMOVE_FROM_LIKES: {
+            const newLikeBook = state.likeBook.filter(book => book.isbn13 !== action.isbn13);
+            saveLikesToLocalStorage(newLikeBook);
             return {
                 ...state,
-                likeBook: newFavBooks
+                likeBook: newLikeBook
             };
         }
         default: {

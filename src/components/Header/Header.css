@@ -1,5 +1,5 @@
 .header__wrapper {
-    width: 60%;
+    width: 1120px;
     height: 104px;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
     justify-content: space-between;
 }
 
-.favourite__link{
+.like__link{
     display: flex;
     justify-content: center;
     align-items: center;

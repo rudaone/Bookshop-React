@@ -16,7 +16,7 @@ import {
   Navigate
 } from 'react-router-dom';
 import { SearchResults } from './components';
-import { FavouriteBooks } from './components/FavouriteBooks';
+import { LikesBooks } from './components/LikesBooks';
 import { Order } from './components/Order';
 import { Footer } from './components/Footer';
 
@@ -41,8 +41,8 @@ function App() {
           <Route path='search-results' element={<SearchResults />} />
         </Route>
 
-        <Route path='/favourite'
-          element={localStorage.getItem('access') ? <FavouriteBooks /> : <Navigate to={'/sign-in'} />} />
+        <Route path='/like'
+          element={localStorage.getItem('access') ? <LikesBooks /> : <Navigate to={'/sign-in'} />} />
         <Route path='/order'
           element={<Order />} />
 

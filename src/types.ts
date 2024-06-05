@@ -44,7 +44,7 @@ interface IBooksState {
     limit: number,
     selectedBook: ISelectedBook,
     cart: ICart[],
-    likeBook: ILIkeBook[],
+    likeBook: ILikes[]
 
 }
 
@@ -101,16 +101,17 @@ interface IActivationInfo {
     token: string
 }
 
-export interface ILIkeBook {
+export interface ILikes {
     isbn13: number;
     title: string;
     price: number;
     authors: string;
+    publisher?: string;
     image: string;
 }
 
-export interface ILikeBookState {
-    likeBook: ILIkeBook[],
+export interface ILikesState {
+    likeBook: ILikes[];
 }
 
 export type {

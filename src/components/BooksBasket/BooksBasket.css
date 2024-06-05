@@ -15,6 +15,7 @@
 .basket__header-title, .header__empty-cart {
     font-size: 56px;
     font-family: "Bebas Neue";
+    font-weight: 500;
     display: flex;
 }
 

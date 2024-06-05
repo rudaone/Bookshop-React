@@ -177,3 +177,12 @@
     font-size: 18px;
     letter-spacing: 2px;
 }
+
+.like__wrapper{
+
+width: 30px;
+height: 30px;
+position: absolute;
+left:890px;
+top:340px
+}

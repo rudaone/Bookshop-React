@@ -1,0 +1,11 @@
+.fav-icon {
+    cursor: pointer;
+    fill: none;
+    stroke: rgb(143, 142, 142);
+    transition: 0.3s;
+}
+
+.fav-icon.active {
+    fill: rgb(230, 85, 85);
+    stroke: rgb(230, 85, 85);
+}

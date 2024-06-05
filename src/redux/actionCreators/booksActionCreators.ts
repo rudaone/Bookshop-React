@@ -1,6 +1,16 @@
-import { IBook, IBooksInfo, IBooksResponse, ISelectedBook, ICart, ILIkeBook } from "../../types";
+import { IBook, IBooksInfo, IBooksResponse, ISelectedBook, ICart, ILikes } from "../../types";
 import {
-    SET_BOOKS, LOAD_BOOKS, ADD_QUANTITY, REMOVE_QUANTITY, CLEAR_CART, LOAD_SELECTED_BOOK, SET_SELECTED_BOOK, ADD_TO_CART, REMOVE_FROM_CART, LIKE_BOOK, REMOVE_FROM_LIKE_BOOK
+    SET_BOOKS,
+    LOAD_BOOKS,
+    ADD_QUANTITY,
+    REMOVE_QUANTITY,
+    CLEAR_CART,
+    LOAD_SELECTED_BOOK,
+    SET_SELECTED_BOOK,
+    ADD_TO_CART,
+    REMOVE_FROM_CART,
+    REMOVE_FROM_LIKES,
+    ADD_TO_LIKES,
 } from '../actionTypes';
 import { takeEvery, put } from 'redux-saga/effects'
 
@@ -50,15 +60,15 @@ const removeFromCart = (isbn13: number) => ({
     isbn13
 });
 
-const likeBook = (likeBook: ILIkeBook) => ({
-    type: LIKE_BOOK,
-    likeBook,
-})
+const addToLikes = (likeBook: ILikes) => ({
+    type: ADD_TO_LIKES,
+    likeBook
+});
 
-const removeFromLikeBook = (isbn13: number) => ({
-    type: REMOVE_FROM_LIKE_BOOK,
-    isbn13,
-})
+const removeFromLikes = (isbn13: number) => ({
+    type: REMOVE_FROM_LIKES,
+    isbn13
+});
 
 
 function* fetchLoadBooks(action: any) {
@@ -98,4 +108,6 @@ export {
     addQuantity,
     removeQuantity,
     clearCart,
+    addToLikes,
+    removeFromLikes,
 }

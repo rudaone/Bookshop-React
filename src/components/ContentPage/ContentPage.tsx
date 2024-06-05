@@ -1,6 +1,6 @@
 import './ContentPage.css';
 import { useParams } from 'react-router-dom';
-import { IStoreState, ISelectedBook } from '../../types';
+import { IStoreState, ISelectedBook, ILikes } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { loadSelectedBook, addToCart } from '../../redux/actionCreators';
@@ -13,11 +13,16 @@ import { Subscribe } from '../Subscribe';
 import { ICart } from '../../types';
 import { Rating } from 'react-simple-star-rating';
 import { StarsRating } from '../StarsRating';
+import { AddLike } from '../Icons/AddLike';
+import { removeFromLikes } from '../../redux/actionCreators';
+import { addToLikes } from '../../redux/actionCreators';
 
 
 const ContentPage = () => {
     const { isbn13 = '' } = useParams();
     const selectedBook = useSelector((state: IStoreState) => state.books.selectedBook);
+    const favorites = useSelector((state: IStoreState) => state.books.likeBook);
+
     const dispatch = useDispatch();
     const [activeTab, setActiveTab] = useState('description');
 
@@ -25,6 +30,34 @@ const ContentPage = () => {
         dispatch(loadSelectedBook(isbn13))
         console.log('Selected book:', selectedBook)
     }, [isbn13, dispatch])
+
+    
+    const [isLiked, setIsLiked] = useState(false);
+
+    useEffect(() => {
+        if (selectedBook && favorites) {
+            setIsLiked(favorites.some(book => book.isbn13 === selectedBook.isbn13));
+        }
+    }, [selectedBook, favorites]);
+
+    const handleLikeClick = () => {
+        const likeBook: ILikes = {
+            isbn13: selectedBook.isbn13,
+            title: selectedBook.title,
+            price: selectedBook.price,
+            authors: selectedBook.authors,
+            publisher: selectedBook.publisher,
+            image: selectedBook.image
+        };
+
+        if (isLiked) {
+            dispatch(removeFromLikes(selectedBook.isbn13));
+        } else {
+            dispatch(addToLikes(likeBook));
+        }
+
+        setIsLiked(!isLiked);
+    };
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
@@ -56,7 +89,12 @@ const ContentPage = () => {
                 <div className='content__book-info'>
                     <div className='content__img-container'
                         style={{ backgroundColor: getRandomColor() }}
-                    >
+                    >  <div className='like__wrapper'>
+                            <AddLike
+                                isLiked={isLiked}
+                                onClick={handleLikeClick}
+                            />
+                        </div>
                         <img className="content__book-image" src={selectedBook.image} alt="img name" />
                     </div>
                     <div className='content__book-infocard'>
@@ -131,8 +169,8 @@ const ContentPage = () => {
 
                     <Link to='https://x.com/?lang=ru'>
                         <Twitter />
-                    </Link>  
-                    
+                    </Link>
+
                     <Link className='dots' to=' '>
                         <span>•••</span>
                     </Link>
